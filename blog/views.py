@@ -2,7 +2,6 @@ import markdown
 
 from markdown.extensions.toc import TocExtension
 
-from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.utils.text import slugify
