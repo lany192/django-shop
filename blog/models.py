@@ -3,6 +3,7 @@ import markdown
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.six import python_2_unicode_compatible
 from django.utils.html import strip_tags
 
@@ -19,7 +20,12 @@ class Category(models.Model):
     Django 内置的全部类型可查看文档：
     https://docs.djangoproject.com/en/1.10/ref/models/fields/#field-types
     """
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100)
+    picture = models.CharField(max_length=256, null=True)
+    created_time = models.DateTimeField('创建日期', default=timezone.now)
+    modified_time = models.DateTimeField('最后修改日期', auto_now=True)
+    # parent = models.ForeignKey('self', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -32,6 +38,8 @@ class Tag(models.Model):
     再次强调一定要继承 models.Model 类！
     """
     name = models.CharField(max_length=100)
+    created_time = models.DateTimeField('创建日期', default=timezone.now)
+    modified_time = models.DateTimeField('最后修改日期', auto_now=True)
 
     def __str__(self):
         return self.name
@@ -51,8 +59,8 @@ class Post(models.Model):
     body = models.TextField()
 
     # 这两个列分别表示文章的创建时间和最后一次修改时间，存储时间的字段用 DateTimeField 类型。
-    created_time = models.DateTimeField()
-    modified_time = models.DateTimeField()
+    created_time = models.DateTimeField('创建日期', default=timezone.now)
+    modified_time = models.DateTimeField('最后修改日期', auto_now=True)
 
     # 文章摘要，可以没有文章摘要，但默认情况下 CharField 要求我们必须存入数据，否则就会报错。
     # 指定 CharField 的 blank=True 参数值后就可以允许空值了。
