@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.http import HttpResponse
 
-from blog import ViewSet
+from blog import model_view_sets
 from blog.feeds import AllPostsRssFeed
 from django.conf.urls import url, include
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register(r'users', ViewSet.UserViewSet)
-router.register(r'groups', ViewSet.GroupViewSet)
+router.register(r'users', model_view_sets.UserViewSet)
+router.register(r'groups', model_view_sets.GroupViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
