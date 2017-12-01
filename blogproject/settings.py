@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'haystack',
     'blog',
     'comments',
+    'goods',
+    'user',
 ]
 
 MIDDLEWARE = [
