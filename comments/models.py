@@ -9,8 +9,8 @@ class Comment(models.Model):
     email = models.EmailField(max_length=255)
     url = models.URLField(blank=True)
     text = models.TextField()
-    created_time = models.DateTimeField(auto_now_add=True)
-
+    created_time = models.DateTimeField('创建日期', auto_now_add=True)
+    modified_time = models.DateTimeField('最后修改日期', auto_now=True)
     post = models.ForeignKey('blog.Post')
 
     def __str__(self):
