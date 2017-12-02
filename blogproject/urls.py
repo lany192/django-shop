@@ -45,4 +45,5 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
 ]
+# 添加多媒体文件路径
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
