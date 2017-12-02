@@ -19,4 +19,4 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        fields = ('id', 'name', 'picture', 'created_time', 'modified_time')
+        fields = ('id', 'name', 'picture', 'created_time')
