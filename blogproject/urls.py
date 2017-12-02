@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
 
@@ -22,6 +23,8 @@ from django.conf.urls import url, include
 from rest_framework import routers
 
 # router 的作用就是自动生成 Api Root 页面
+from blogproject import settings
+
 router = routers.DefaultRouter()
 router.register(r'auth/users', model_view_sets.AuthUserViewSet)
 router.register(r'auth/groups', model_view_sets.AuthGroupViewSet)
@@ -42,3 +45,4 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
