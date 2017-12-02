@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
-from blog.serializers import UserSerializer, GroupSerializer
+
+from blog.models import Category
+from blog.serializers import UserSerializer, GroupSerializer, CategorySerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,3 +19,8 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
