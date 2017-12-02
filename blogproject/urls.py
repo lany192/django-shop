@@ -21,6 +21,7 @@ from blog.feeds import AllPostsRssFeed
 from django.conf.urls import url, include
 from rest_framework import routers
 
+# router 的作用就是自动生成 Api Root 页面
 router = routers.DefaultRouter()
 router.register(r'users', model_view_sets.UserViewSet)
 router.register(r'groups', model_view_sets.GroupViewSet)
