@@ -5,10 +5,10 @@ from user.models import User
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'created_time', 'modified_time', 'age', 'nickname', 'birthday']
+    list_display = ['id', 'name', 'nickname', 'email', 'birthday', 'phone', 'created_time', 'modified_time']
     list_per_page = 10
-    search_fields = ['name', ]
-    list_editable = ['age', ]
+    search_fields = ['name', 'nickname', 'phone']
+    list_editable = ['birthday', ]
     list_filter = ['created_time', ]
     # 设置哪些字段可以点击进入编辑界面
     list_display_links = ('id', 'name')

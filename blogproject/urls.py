@@ -23,8 +23,8 @@ from rest_framework import routers
 
 # router 的作用就是自动生成 Api Root 页面
 router = routers.DefaultRouter()
-router.register(r'users', model_view_sets.UserViewSet)
-router.register(r'groups', model_view_sets.GroupViewSet)
+router.register(r'auth/users', model_view_sets.AuthUserViewSet)
+router.register(r'auth/groups', model_view_sets.AuthGroupViewSet)
 router.register(r'category', model_view_sets.CategoryViewSet)
 router.register(r'posts', model_view_sets.PostViewSet)
 router.register(r'tags', model_view_sets.TagViewSet)
