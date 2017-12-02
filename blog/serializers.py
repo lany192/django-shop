@@ -29,6 +29,10 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
+    tags = TagSerializer(many=True)  # 数组
+    category = CategorySerializer()  # 单个实体
+    author = UserSerializer()  # 单个实体
+
     class Meta:
         model = Post
         fields = ('id', 'title', 'body', 'created_time', 'modified_time'
