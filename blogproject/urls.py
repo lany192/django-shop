@@ -25,6 +25,8 @@ router = routers.DefaultRouter()
 router.register(r'users', model_view_sets.UserViewSet)
 router.register(r'groups', model_view_sets.GroupViewSet)
 router.register(r'category', model_view_sets.CategoryViewSet)
+router.register(r'posts', model_view_sets.PostViewSet)
+router.register(r'tags', model_view_sets.TagViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
