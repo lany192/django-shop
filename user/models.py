@@ -15,7 +15,7 @@ class AppUser(models.Model):  # app用户实体
     phone = models.CharField('电话', max_length=32)
     password = models.CharField('登录密码', max_length=64)
     avatar = models.ImageField('用户头像', upload_to='avatar/', default='avatar/user0.jpg', storage=CustomFileStorage())
-    signature = models.CharField(max_length=128, default='这家伙很懒，什么也没留下.')
+    signature = models.CharField('个性签名', max_length=128, default='这家伙很懒，什么也没留下.')
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     modified_time = models.DateTimeField('最后修改日期', auto_now=True)
     delete_flag = models.BooleanField('删除标记', default=False)
@@ -41,6 +41,3 @@ class AppToken(models.Model):  # app用户token实体
     class Meta:
         verbose_name = "用户登录信息"
         verbose_name_plural = "用户登录信息"
-
-
-

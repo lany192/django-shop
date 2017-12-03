@@ -11,18 +11,8 @@ from django.utils.html import strip_tags
 # python_2_unicode_compatible 装饰器用于兼容 Python2
 @python_2_unicode_compatible
 class Category(models.Model):
-    """
-    Django 要求模型必须继承 models.Model 类。
-    Category 只需要一个简单的分类名 name 就可以了。
-    CharField 指定了分类名 name 的数据类型，CharField 是字符型，
-    CharField 的 max_length 参数指定其最大长度，超过这个长度的分类名就不能被存入数据库。
-    当然 Django 还为我们提供了多种其它的数据类型，如日期时间类型 DateTimeField、整数类型 IntegerField 等等。
-    Django 内置的全部类型可查看文档：
-    https://docs.djangoproject.com/en/1.10/ref/models/fields/#field-types
-    """
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=100)
-    picture = models.CharField(max_length=256, null=True)
+    name = models.CharField('分类名称', max_length=100)
+    picture = models.CharField('分类图片', max_length=256, null=True)
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     modified_time = models.DateTimeField('最后修改日期', auto_now=True)
 
@@ -42,7 +32,7 @@ class Tag(models.Model):
     标签 Tag 也比较简单，和 Category 一样。
     再次强调一定要继承 models.Model 类！
     """
-    name = models.CharField(max_length=100)
+    name = models.CharField('标签名称', max_length=100)
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     modified_time = models.DateTimeField('最后修改日期', auto_now=True)
 
@@ -61,11 +51,11 @@ class Post(models.Model):
     """
 
     # 文章标题
-    title = models.CharField(max_length=70)
+    title = models.CharField('标题', max_length=70)
 
     # 文章正文，我们使用了 TextField。
     # 存储比较短的字符串可以使用 CharField，但对于文章的正文来说可能会是一大段文本，因此使用 TextField 来存储大段文本。
-    body = models.TextField()
+    body = models.TextField('内容')
 
     # 这两个列分别表示文章的创建时间和最后一次修改时间，存储时间的字段用 DateTimeField 类型。
     created_time = models.DateTimeField('创建日期', default=timezone.now)
@@ -73,10 +63,10 @@ class Post(models.Model):
 
     # 文章摘要，可以没有文章摘要，但默认情况下 CharField 要求我们必须存入数据，否则就会报错。
     # 指定 CharField 的 blank=True 参数值后就可以允许空值了。
-    excerpt = models.CharField(max_length=200, blank=True)
+    excerpt = models.CharField('摘要', max_length=200, blank=True)
 
     # 新增 views 字段记录阅读量
-    views = models.PositiveIntegerField(default=0)
+    views = models.PositiveIntegerField('阅读量', default=0)
 
     # 这是分类与标签，分类与标签的模型我们已经定义在上面。
     # 我们在这里把文章对应的数据库表和分类、标签对应的数据库表关联了起来，但是关联形式稍微有点不同。
