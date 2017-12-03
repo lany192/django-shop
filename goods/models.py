@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.utils.six import python_2_unicode_compatible
 
 from system.storage import CustomFileStorage
-from user.models import AppUser
 
 
 @python_2_unicode_compatible
@@ -19,7 +18,6 @@ class Category(models.Model):  # 商品实体
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     modified_time = models.DateTimeField('最后修改日期', auto_now=True)
     delete_flag = models.BooleanField('删除标记', default=False)
-    user = models.ForeignKey(AppUser)
 
     def __str__(self):
         return self.name
@@ -38,7 +36,6 @@ class Goods(models.Model):  # 商品实体
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     modified_time = models.DateTimeField('最后修改日期', auto_now=True)
     delete_flag = models.BooleanField('删除标记', default=False)
-    user = models.ForeignKey(AppUser)
 
     def __str__(self):
         return self.name

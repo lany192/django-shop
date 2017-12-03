@@ -1,17 +1,20 @@
+# coding:utf-8
 from django.contrib import admin
+from django.contrib.auth.models import User
 
-# Register your models here.
-from user.models import User, AppUser
-
-
-class AppUserAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'nickname', 'email', 'birthday', 'phone', 'avatar', 'created_time', 'modified_time']
-    list_per_page = 10
-    search_fields = ['name', 'nickname', 'phone']
-    list_editable = ['birthday', 'avatar']
-    list_filter = ['created_time', ]
-    # 设置哪些字段可以点击进入编辑界面
-    list_display_links = ('id', 'name')
+from user.models import UserProfile
 
 
-admin.site.register(AppUser, AppUserAdmin)
+class ProfileInline(admin.StackedInline):  # 将UserProfile加入到Admin的user表中
+    model = UserProfile
+    verbose_name = '其它拓展属性'
+
+
+class UserProfileAdmin(admin.ModelAdmin):
+    inlines = (ProfileInline,)
+    max_num = 1
+    can_delete = False
+
+
+admin.site.unregister(User)  # 去掉在admin中的注册
+admin.site.register(User, UserProfileAdmin)  # 用userProfileAdmin注册user

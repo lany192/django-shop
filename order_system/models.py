@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.utils.six import python_2_unicode_compatible
 
 from system.storage import CustomFileStorage
-from user.models import AppUser
+from user.models import UserProfile
 
 
 @python_2_unicode_compatible
@@ -19,7 +19,7 @@ class Order(models.Model):  # 订单实体
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     modified_time = models.DateTimeField('最后修改日期', auto_now=True)
     delete_flag = models.BooleanField('删除标记', default=False)
-    user = models.ForeignKey(AppUser)
+    user = models.ForeignKey(UserProfile, verbose_name='下单用户')
 
     def __str__(self):
         return self.name
