@@ -8,7 +8,7 @@ from system.storage import CustomFileStorage
 
 
 @python_2_unicode_compatible
-class UserProfile(models.Model):  # app用户实体
+class UserProfile(models.Model):  # 系统用户的拓展实体
     user = models.OneToOneField(User, unique=True, verbose_name='用户')
     nickname = models.CharField('昵称', max_length=64)
     birthday = models.DateField('生日', default=timezone.now)
@@ -26,8 +26,8 @@ class UserProfile(models.Model):  # app用户实体
         return self.nickname
 
     class Meta:
-        verbose_name = "用户"
-        verbose_name_plural = "用户"
+        verbose_name = "用户其它信息"
+        verbose_name_plural = "用户其它信息"
 
 
 def create_user_profile(sender, instance, created, **kwargs):
