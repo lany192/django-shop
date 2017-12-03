@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import User
 
-from user.models import UserProfile
+from user.models import UserProfile, AppToken
 
 
 class ProfileInline(admin.StackedInline):  # 将UserProfile加入到Admin的user表中
@@ -22,3 +22,4 @@ class AppTokenAdmin(admin.ModelAdmin):
 
 admin.site.unregister(User)  # 去掉在admin中的注册
 admin.site.register(User, UserProfileAdmin)  # 用userProfileAdmin注册user
+admin.site.register(AppToken, AppTokenAdmin)

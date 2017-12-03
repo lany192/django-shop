@@ -42,7 +42,7 @@ post_save.connect(create_user_profile, sender=User)
 
 @python_2_unicode_compatible
 class AppToken(models.Model):  # app用户token实体
-    user = models.ForeignKey(UserProfile)
+    user = models.OneToOneField(User, unique=True, verbose_name='用户')
     token = models.CharField('登录token', max_length=32)
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     overtime = models.DateTimeField('过期时间', auto_now=True)
@@ -51,5 +51,5 @@ class AppToken(models.Model):  # app用户token实体
         return self.token
 
     class Meta:
-        verbose_name = "用户登录信息"
-        verbose_name_plural = "用户登录信息"
+        verbose_name = "登录信息"
+        verbose_name_plural = "登录信息"
