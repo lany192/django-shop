@@ -9,10 +9,13 @@ from django.utils.html import strip_tags
 
 
 # python_2_unicode_compatible 装饰器用于兼容 Python2
+from system.storage import CustomFileStorage
+
+
 @python_2_unicode_compatible
 class Category(models.Model):
     name = models.CharField('分类名称', max_length=100)
-    picture = models.CharField('分类图片', max_length=256, null=True)
+    picture = models.ImageField('分类图片', upload_to='category/', default='category/default.jpg', storage=CustomFileStorage())
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     modified_time = models.DateTimeField('最后修改日期', auto_now=True)
 
