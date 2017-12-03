@@ -25,10 +25,15 @@ class Category(models.Model):
     picture = models.CharField(max_length=256, null=True)
     created_time = models.DateTimeField('创建日期', default=timezone.now)
     modified_time = models.DateTimeField('最后修改日期', auto_now=True)
+
     # parent = models.ForeignKey('self', blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "分类"
+        verbose_name_plural = "分类"
 
 
 @python_2_unicode_compatible
@@ -43,6 +48,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "标签"
+        verbose_name_plural = "标签"
 
 
 @python_2_unicode_compatible
@@ -95,6 +104,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_time']
+        verbose_name = "博客"
+        verbose_name_plural = "博客"
 
     def increase_views(self):
         self.views += 1

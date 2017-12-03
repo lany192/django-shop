@@ -23,6 +23,10 @@ class AppUser(models.Model):  # app用户实体
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "用户"
+        verbose_name_plural = "用户"
+
 
 @python_2_unicode_compatible
 class AppToken(models.Model):  # app用户token实体
@@ -33,3 +37,10 @@ class AppToken(models.Model):  # app用户token实体
 
     def __str__(self):
         return self.token
+
+    class Meta:
+        verbose_name = "用户登录信息"
+        verbose_name_plural = "用户登录信息"
+
+
+
