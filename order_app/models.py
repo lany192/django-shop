@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.db import models
 from django.utils.six import python_2_unicode_compatible
 
-from goods.models import Goods
+from goods_app.models import Goods
 from user.models import UserProfile
 
 
@@ -79,7 +79,7 @@ class Address(models.Model):  # 收货地址
 @python_2_unicode_compatible
 class Order(models.Model):  # 订单实体
     order_no = models.CharField('订单编号', max_length=64)
-    goods = models.ManyToManyField(Goods, verbose_name='购买的商品')
+    goods_app = models.ManyToManyField(Goods, verbose_name='购买的商品')
     user = models.ForeignKey(UserProfile, verbose_name='下单用户')
     address = models.ForeignKey(Address, verbose_name='收货地址')
     created_time = models.DateTimeField('创建日期', default=timezone.now)
