@@ -3,7 +3,7 @@
 from django.apps import AppConfig
 import os
 
-default_app_config = 'order_system.OrderConfig'
+default_app_config = 'order_app.OrderConfig'
 
 VERBOSE_APP_NAME = u"订单管理"
 

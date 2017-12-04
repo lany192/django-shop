@@ -3,6 +3,7 @@ django-haystack==2.6.1
 djangorestframework==3.7.3
 jieba==0.38
 Markdown==2.6.9
+mysqlclient==1.3.12
 olefile==0.44
 Pillow==4.3.0
 Pygments==2.2.0

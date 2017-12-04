@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'comments',
     'goods',
     'user',
-    'order_system',
+    'order_app',
     'rest_framework',
 ]
 

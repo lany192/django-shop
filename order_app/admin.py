@@ -1,7 +1,7 @@
 # coding:utf-8
 from django.contrib import admin
 
-from order_system.models import Area, City, Province, Address, Order
+from order_app.models import Area, City, Province, Address, Order
 
 
 class AppTokenAdmin(admin.ModelAdmin):
