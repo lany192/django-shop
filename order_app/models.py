@@ -82,7 +82,7 @@ class Order(models.Model):  # 订单实体
     goods_app = models.ManyToManyField(Goods, verbose_name='购买的商品')
     user = models.ForeignKey(UserProfile, verbose_name='下单用户')
     address = models.ForeignKey(Address, verbose_name='收货地址')
-    created_time = models.DateTimeField('创建日期', default=timezone.now)
+    created_time = models.DateTimeField('创建日期', auto_now_add=True)
 
     def __str__(self):
         return self.order_no

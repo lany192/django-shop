@@ -16,8 +16,8 @@ class UserProfile(models.Model):  # 系统用户的拓展实体
     phone = models.CharField('电话', max_length=32)
     avatar = models.ImageField('用户头像', upload_to='avatar/', default='avatar/user0.jpg', storage=CustomFileStorage())
     signature = models.CharField('个性签名', max_length=128, default='这家伙很懒，什么也没留下.')
-    created_time = models.DateTimeField('创建日期', default=timezone.now)
-    modified_time = models.DateTimeField('最后修改日期', auto_now=True)
+    created_time = models.DateTimeField('创建日期', auto_now_add=True)
+    modified_time = models.DateTimeField('修改日期', auto_now=True)
 
     def __str__(self):
         return self.nickname
@@ -44,7 +44,7 @@ post_save.connect(create_user_profile, sender=User)
 class AppToken(models.Model):  # app用户token实体
     user = models.OneToOneField(User, unique=True, verbose_name='用户')
     token = models.CharField('登录token', max_length=32)
-    created_time = models.DateTimeField('创建日期', default=timezone.now)
+    created_time = models.DateTimeField('创建日期', auto_now_add=True)
     overtime = models.DateTimeField('过期时间', auto_now=True)
 
     def __str__(self):
