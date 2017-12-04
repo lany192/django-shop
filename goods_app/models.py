@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.utils.six import python_2_unicode_compatible
 
@@ -11,11 +10,12 @@ class Category(models.Model):  # 商品分类
     name = models.CharField('分类名称', max_length=256)
     created_time = models.DateTimeField('创建日期', auto_now_add=True)
     modified_time = models.DateTimeField('修改日期', auto_now=True)
-    parent = models.ForeignKey('self', blank=True, null=True, verbose_name='父类id')
+    parent = models.ForeignKey('self', blank=True, null=True, verbose_name='上级分类(可不选)')
     picture = models.ImageField('分类图片', upload_to='category/', default='category/default.jpeg',
                                 storage=CustomFileStorage())
 
     def thumbnail(self):
+        # 缩略图根据picture字段获取
         return mark_safe(u'<img src="%s" width="50px" />' % self.picture.url)
 
     # 页面显示的缩略图字段
