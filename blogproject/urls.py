@@ -17,20 +17,23 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
 
-from blog import model_view_sets
 from blog.feeds import AllPostsRssFeed
 from django.conf.urls import url, include
 from rest_framework import routers
 
 # router 的作用就是自动生成 Api Root 页面
-from blogproject import settings
+from blogproject import settings, view_sets
 
 router = routers.DefaultRouter()
-router.register(r'auth/users', model_view_sets.AuthUserViewSet)
-router.register(r'auth/groups', model_view_sets.AuthGroupViewSet)
-router.register(r'category', model_view_sets.CategoryViewSet)
-router.register(r'posts', model_view_sets.PostViewSet)
-router.register(r'tags', model_view_sets.TagViewSet)
+router.register(r'auth/users', view_sets.AuthUserViewSet)
+router.register(r'auth/groups', view_sets.AuthGroupViewSet)
+router.register(r'category', view_sets.CategoryViewSet)
+router.register(r'posts', view_sets.PostViewSet)
+router.register(r'tags', view_sets.TagViewSet)
+router.register(r'areas', view_sets.AreaViewSet)
+router.register(r'cities', view_sets.CityViewSet)
+router.register(r'provinces', view_sets.ProvinceViewSet)
+router.register(r'countries', view_sets.CountryViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
