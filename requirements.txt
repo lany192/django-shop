@@ -1,4 +1,4 @@
-Django==1.11.7
+Django==1.10.8
 django-haystack==2.6.1
 djangorestframework==3.7.3
 jieba==0.38
