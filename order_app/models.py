@@ -50,7 +50,7 @@ class Province(models.Model):  # 省份
 @python_2_unicode_compatible
 class Country(models.Model):  # 国家
     name = models.CharField('国家/地区名称', max_length=64)
-    code = models.IntegerField('国家/地区代码')
+    code = models.IntegerField('国家/地区代码', default=0)
     province = models.ManyToManyField(Province, verbose_name="省份")
 
     def __str__(self):
