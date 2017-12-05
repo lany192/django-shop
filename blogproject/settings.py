@@ -146,6 +146,7 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 10
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
+# rest_framework配置
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -171,4 +172,5 @@ LOGGING = {
     },
 }
 
+# 系统用户拓展实体
 AUTH_PROFILE_MODULE = 'user.UserProfile'

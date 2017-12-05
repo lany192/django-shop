@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import Post, Category, Tag
 
-admin.site.site_header = "商品管理系统"
-admin.site.site_title = "商品管理系统"
+admin.site.site_header = "用户登录"
+admin.site.site_title = "用户中心"
 
 
 class PostAdmin(admin.ModelAdmin):
