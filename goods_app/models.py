@@ -7,10 +7,9 @@ from system.storage import CustomFileStorage
 
 @python_2_unicode_compatible
 class Category(models.Model):  # 商品分类
-    name = models.CharField('分类名称', max_length=256)
-    created_time = models.DateTimeField('创建日期', auto_now_add=True)
-    modified_time = models.DateTimeField('修改日期', auto_now=True)
     parent = models.ForeignKey('self', blank=True, null=True, verbose_name='上级分类(可不选)')
+    name = models.CharField('分类名称', max_length=256)
+    sort = models.IntegerField('排序')
     picture = models.ImageField('分类图片', upload_to='category/', default='category/default.jpeg',
                                 storage=CustomFileStorage())
 
